@@ -1,0 +1,43 @@
+//www.plantuml.com/plantuml/png/TP3FJiCm3CRlVGgh9_ve1wuv3P2Gk2762rYfsQp5oOZTJHFYtKdLjUkqxjJcfy-_nDzI3REr4YeVK1LUMxKabE6t0dYCAEHWPPdZkZkJ88Sf2CcZSOeZ-wjEeY_ocyYUCSwhTCiXw9HajF9Nq5j8Q6VJYlAUFVKQE-ukDBlCdgv6Fl0e5AqVGKbjj25JW91jKdFzv4_QCntAqFWO1-_HQ4svGpv99xsUUsw48wkLcNGgJZ3YceOozUx-3C_55Dn9nihhfneM2wWVwd5d1vb-MbBJQa13gdmc7JlOvRJdXfgNuwnngCI1u9PqBZCKuE2GsKgcFz-yyJlbQhhxXMlqE-ZtrjlPgNLCBoashOH_
+
+@startuml
+class Customer {
+  +name: String
+  +email: String
+  +location: String
+}
+
+class Technician {
+  +name: String
+  +skills: String
+  +ratings: Float
+}
+
+class Service {
+  +type: String
+  +price: Float
+}
+
+class Payment {
+  +amount: Float
+  +method: String
+}
+
+class Review {
+  +rating: Integer
+  +comment: String
+}
+
+class Administrator {
+  +manageCustomers()
+  +manageTechnicians()
+}
+
+Customer "1" -- "*" Service : requests
+Service "1" -- "1" Technician : providedBy
+Customer "1" -- "*" Payment : makes
+Customer "1" -- "*" Review : writes
+Review "1" -- "1" Technician : for
+Administrator "1" -- "*" Customer : manages
+Administrator "1" -- "*" Technician : manages
+@enduml
